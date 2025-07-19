@@ -1,0 +1,16 @@
+name: Backend CI
+
+on: [push]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install deps
+        run: npm install
+      - name: Run tests
+        run: npm test
