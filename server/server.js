@@ -13,11 +13,6 @@ const setupSocket = require('./socket/socket');
 
 const helmet = require('helmet');
 const morgan = require('morgan');
-if (process.env.NODE_ENV === 'production') {
-  app.use(morgan('combined'));
-}
-
-
 
 // Load environment variables
 dotenv.config();
@@ -40,6 +35,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
+app.use(morgan('combined'));
 
 // Routes
 app.use('/api/messages', require('./routes/messageRoutes'));
